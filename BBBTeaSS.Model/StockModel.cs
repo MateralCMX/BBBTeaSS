@@ -14,7 +14,7 @@ namespace BBBTeaSS.Model
         /// <summary>
         /// 唯一标识
         /// </summary>
-        public int ID { get; set; }
+        public string ID { get; set; }
         /// <summary>
         /// 库存商品
         /// </summary>

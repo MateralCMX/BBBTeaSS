@@ -24,6 +24,10 @@ namespace BBBTeaSS.Model
         /// </summary>
         public string Manufactor { get; set; }
         /// <summary>
+        /// 联系电话
+        /// </summary>
+        public string Phone { get; set; }
+        /// <summary>
         /// 种类
         /// </summary>
         public VarietyModel Variety { get; set; }
