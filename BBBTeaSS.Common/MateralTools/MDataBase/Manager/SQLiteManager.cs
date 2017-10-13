@@ -96,5 +96,26 @@ namespace MateralTools.MDataBase
         {
             return SQLiteHelper.ExecuteNonQuery(SQLiteHelper.GetConnection(ConStrName), sql, paras);
         }
+        /// <summary>
+        /// 执行查询语句或存储过程
+        /// </summary>
+        /// <param name="sql">SQL语句</param>
+        /// <param name="paras">参数</param>
+        /// <param name="ConStrName">链接字符串</param>
+        /// <returns>查询结果</returns>
+        public static DataSet ExecuteQuery(string sql, SQLiteParameter[] paras, string ConStrName = null)
+        {
+            return SQLiteHelper.ExecuteDataSet(SQLiteHelper.GetConnection(ConStrName), sql, paras);
+        }
+        /// <summary>
+        /// 执行查询语句或存储过程
+        /// </summary>
+        /// <param name="tsqM">T-SQL对象</param>
+        /// <param name="ConStrName">链接字符串</param>
+        /// <returns>查询结果</returns>
+        public static DataSet ExecuteQuery(TSQLModel tsqM, string ConStrName = null)
+        {
+            return ExecuteQuery(tsqM.SQLStr, tsqM.GetSQLParameters<SQLiteParameter>());
+        }
     }
 }

@@ -116,7 +116,7 @@ namespace MateralTools.MDataBase
                 AttachParameters(cmd, commandText, paramList);
             }
             DataSet ds = new DataSet();
-            ExecuteDataSet(cmd);
+            ds = ExecuteDataSet(cmd);
             return ds;
         }
         /// <summary>
@@ -377,94 +377,104 @@ namespace MateralTools.MDataBase
             if (paramList == null || paramList.Length == 0) return null;
 
             SQLiteParameterCollection coll = cmd.Parameters;
-            string parmString = commandText.Substring(commandText.IndexOf("@"));
-            // pre-process the string so always at least 1 space after a comma.
-            parmString = parmString.Replace(",", " ,");
-            // get the named parameters into a match collection
-            string pattern = @"(@)\S*(.*?)\b";
-            Regex ex = new Regex(pattern, RegexOptions.IgnoreCase);
-            MatchCollection mc = ex.Matches(parmString);
-            string[] paramNames = new string[mc.Count];
-            int i = 0;
-            foreach (Match m in mc)
+            if (paramList is SQLiteParameter[])
             {
-                paramNames[i] = m.Value;
-                i++;
-            }
-
-            // now let's type the parameters
-            int j = 0;
-            Type t = null;
-            foreach (object o in paramList)
-            {
-                t = o.GetType();
-                SQLiteParameter parm = new SQLiteParameter();
-                switch (t.ToString())
+                foreach (SQLiteParameter item in paramList)
                 {
-                    case ("DBNull"):
-                    case ("Char"):
-                    case ("SByte"):
-                    case ("UInt16"):
-                    case ("UInt32"):
-                    case ("UInt64"):
-                        throw new SystemException("Invalid data type");
-                    case ("System.String"):
-                        parm.DbType = DbType.String;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = (string)paramList[j];
-                        coll.Add(parm);
-                        break;
-                    case ("System.Byte[]"):
-                        parm.DbType = DbType.Binary;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = (byte[])paramList[j];
-                        coll.Add(parm);
-                        break;
-                    case ("System.Int32"):
-                        parm.DbType = DbType.Int32;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = (int)paramList[j];
-                        coll.Add(parm);
-                        break;
-                    case ("System.Boolean"):
-                        parm.DbType = DbType.Boolean;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = (bool)paramList[j];
-                        coll.Add(parm);
-                        break;
-                    case ("System.DateTime"):
-                        parm.DbType = DbType.DateTime;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = System.Convert.ToDateTime(paramList[j]);
-                        coll.Add(parm);
-                        break;
-                    case ("System.Double"):
-                        parm.DbType = DbType.Double;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = System.Convert.ToDouble(paramList[j]);
-                        coll.Add(parm);
-                        break;
-                    case ("System.Decimal"):
-                        parm.DbType = DbType.Decimal;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = System.Convert.ToDecimal(paramList[j]);
-                        break;
-                    case ("System.Guid"):
-                        parm.DbType = DbType.Guid;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = (System.Guid)(paramList[j]);
-                        break;
+                    coll.Add(item);
+                }
+            }
+            else
+            {
+                string parmString = commandText.Substring(commandText.IndexOf("@"));
+                // pre-process the string so always at least 1 space after a comma.
+                parmString = parmString.Replace(",", " ,");
+                // get the named parameters into a match collection
+                string pattern = @"(@)\S*(.*?)\b";
+                Regex ex = new Regex(pattern, RegexOptions.IgnoreCase);
+                MatchCollection mc = ex.Matches(parmString);
+                string[] paramNames = new string[mc.Count];
+                int i = 0;
+                foreach (Match m in mc)
+                {
+                    paramNames[i] = m.Value;
+                    i++;
+                }
 
-                    case ("System.Object"):
-                        parm.DbType = DbType.Object;
-                        parm.ParameterName = paramNames[j];
-                        parm.Value = paramList[j];
-                        coll.Add(parm);
-                        break;
-                    default:
-                        throw new SystemException("Value is of unknown data type");
-                } // end switch
-                j++;
+                // now let's type the parameters
+                int j = 0;
+                Type t = null;
+                foreach (object o in paramList)
+                {
+                    t = o.GetType();
+                    SQLiteParameter parm = new SQLiteParameter();
+                    switch (t.ToString())
+                    {
+                        case ("DBNull"):
+                        case ("Char"):
+                        case ("SByte"):
+                        case ("UInt16"):
+                        case ("UInt32"):
+                        case ("UInt64"):
+                            throw new SystemException("Invalid data type");
+                        case ("System.String"):
+                            parm.DbType = DbType.String;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = (string)paramList[j];
+                            coll.Add(parm);
+                            break;
+                        case ("System.Byte[]"):
+                            parm.DbType = DbType.Binary;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = (byte[])paramList[j];
+                            coll.Add(parm);
+                            break;
+                        case ("System.Int32"):
+                            parm.DbType = DbType.Int32;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = (int)paramList[j];
+                            coll.Add(parm);
+                            break;
+                        case ("System.Boolean"):
+                            parm.DbType = DbType.Boolean;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = (bool)paramList[j];
+                            coll.Add(parm);
+                            break;
+                        case ("System.DateTime"):
+                            parm.DbType = DbType.DateTime;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = System.Convert.ToDateTime(paramList[j]);
+                            coll.Add(parm);
+                            break;
+                        case ("System.Double"):
+                            parm.DbType = DbType.Double;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = System.Convert.ToDouble(paramList[j]);
+                            coll.Add(parm);
+                            break;
+                        case ("System.Decimal"):
+                            parm.DbType = DbType.Decimal;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = System.Convert.ToDecimal(paramList[j]);
+                            break;
+                        case ("System.Guid"):
+                            parm.DbType = DbType.Guid;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = (System.Guid)(paramList[j]);
+                            break;
+
+                        case ("System.Object"):
+                            parm.DbType = DbType.Object;
+                            parm.ParameterName = paramNames[j];
+                            parm.Value = paramList[j];
+                            coll.Add(parm);
+                            break;
+                        default:
+                            throw new SystemException("Value is of unknown data type");
+                    } // end switch
+                    j++;
+                }
             }
             return coll;
         }

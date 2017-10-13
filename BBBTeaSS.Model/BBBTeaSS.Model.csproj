@@ -46,5 +46,11 @@
     <Compile Include="UserModel.cs" />
     <Compile Include="VarietyModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BBBTeaSS.Common\BBBTeaSS.Common.csproj">
+      <Project>{B1EA1355-E4D3-4E81-AED2-3A13F067750B}</Project>
+      <Name>BBBTeaSS.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
