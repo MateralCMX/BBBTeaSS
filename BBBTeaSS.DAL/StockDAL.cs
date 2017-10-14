@@ -37,7 +37,7 @@ namespace BBBTeaSS.DAL
         /// <summary>
         /// 删除一个库存
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">唯一标示</param>
         public void DeleteStockInfo(int id)
         {
             StockModel stockM = GetStockInfoByID(id);
