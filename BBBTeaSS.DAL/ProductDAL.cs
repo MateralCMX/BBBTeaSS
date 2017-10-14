@@ -36,7 +36,7 @@ namespace BBBTeaSS.DAL
         /// <summary>
         /// 删除一个商品
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">唯一标示</param>
         public void DeleteProductInfo(int id)
         {
             ProductModel productM = GetProductInfoByID(id);
