@@ -1,0 +1,40 @@
+﻿body {
+    text-align: center;
+}
+
+.Top {
+    margin: 0 auto;
+    width: 1024px;
+    height: 85px;
+    border: 1px solid #c8cccf;
+}
+
+.Centent {
+    margin: 0 auto;
+    width: 1024px;
+    height: 673px;
+    border: 1px solid #c8cccf;
+    margin-top:10px;
+}
+
+.input_control {
+    width: 360px;
+    margin: 20px auto;
+}
+
+input[type="text"], [type="password"], [type="submit"] {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.4em;
+    height: 2.7em;
+    border-radius: 4px;
+    border: 1px solid #c8cccf;
+    color: #6a6f77;
+    -web-kit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    width: 100%;
+}
