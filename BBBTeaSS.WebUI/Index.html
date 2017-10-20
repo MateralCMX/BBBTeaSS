@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>科标所专用出入库系统 - 主页</title>
+    <link rel="stylesheet" href="Content/Css/Index.css" type="text/css">
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+
+            .tg td {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                padding: 10px 5px;
+                border-style: solid;
+                border-width: 1px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: #ccc;
+                color: #333;
+                background-color: #fff;
+            }
+
+            .tg th {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                padding: 10px 5px;
+                border-style: solid;
+                border-width: 1px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: #ccc;
+                color: #333;
+                background-color: #f0f0f0;
+            }
+
+            .tg .tg-baqh {
+                text-align: center;
+                vertical-align: top
+            }
+    </style>
+</head>
+<body>
+    <div class="Top">
+        <h1>科标所专用出入库系统Ver.10086</h1>
+    </div>
+    <div class="Centent">
+        <!--导航菜单-->
+        <div id="menu">
+            <div id="menu_top"></div>
+            <div id="menu_center">
+                <div id="menu_navlinks">
+                    <a href="Index.html">主页</a>
+
+                    <hr>
+
+                    <h2>基本资料</h2>
+                    <a href="#">商品基础数据</a>
+                    
+                    <hr>
+
+                    <h2>仓库作业</h2>
+                    <a href="#">入库</a>
+                    <a href="#">出库</a>
+
+                    <hr>
+
+                    <h2>系统管理</h2>
+                    <a href="#">账号管理</a>
+                    <a href="#">退出系统</a>
+
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1>欢迎使用 - 主页</h1>
+            <hr>
+        </div>
+
+        <!--搜索-->
+        <div>
+            <form action="#" method="get">
+                名称：<input type="text" id="Acct" />
+
+                厂家：<input type="text" id="Acct" />
+
+                种类：
+                <select name="">
+                    <option value="0">普洱</option>
+                    <option value="1">红茶</option>
+                    <option value="2">绿茶</option>
+                    <option value="3">乌龙</option>
+                    <option value="4">龙井</option>
+                    <option value="5">龙井</option>
+                    <option value="6">普洱</option>
+                </select>
+
+                地区：<input type="text" id="Acct" style="width:180px;"/>
+
+                时间：<input type="datetime-local" value="" id="Acct"  style="width:168px;"/> - <input type="datetime-local" value="" id="Acct" style="width:166px;" />
+
+                状态：<input type="text" id="Acct" />
+
+
+                数量：<input type="text" id="Acct"  style="width:180px;"/>
+
+
+                是否删除：
+                <select name="">
+                    <option value="0">未删除</option>
+                    <option value="1">已删除</option>
+                    <option value="2">所有</option>
+                </select>
+                <input type="submit" />
+            </form>
+        </div>
+
+        <!--商品表格-->
+        <div>
+            <hr>
+            <table class="tg" style="undefined;table-layout: fixed; width: 834px">
+                <colgroup>
+                    <col style="width: 87px">
+                    <col style="width: 129px">
+                    <col style="width: 70px">
+                    <col style="width: 70px">
+                    <col style="width: 70px">
+                    <col style="width: 369px">
+                    <col style="width: 73px">
+                </colgroup>
+                <tr>
+                    <th class="tg-baqh">编号</th>
+                    <th class="tg-baqh">名称</th>
+                    <th class="tg-baqh">厂家</th>
+                    <th class="tg-baqh">种类</th>
+                    <th class="tg-baqh">地区</th>
+                    <th class="tg-baqh">备注</th>
+                    <th class="tg-baqh">是否删除</th>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0001</td>
+                    <td class="tg-baqh">普洱茶</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh">
+                        x
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0002</td>
+                    <td class="tg-baqh">阿三大时代</td>
+                    <td class="tg-baqh">a打</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0003</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0004</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0005</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0006</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0007</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0008</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0009</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+                <tr>
+                    <td class="tg-baqh">0010</td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                    <td class="tg-baqh"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!--分页-->
+        <div>
+            <hr />
+            <span style="float:right;">
+                <ul >
+                    <li>共10页</li>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">尾页</a></li>
+                </ul>
+            </span>
+        </div>
+
+    </div>
+</body>
+</html>
