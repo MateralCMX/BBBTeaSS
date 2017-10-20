@@ -49,16 +49,16 @@ namespace BBBTeaSS.WPFUI
                 if (resM.ResultType == MResultType.Success)
                 {
                     ApplicationManager.LoginUserM = resM.Data;
-                    ApplicationManager.ShowInfoMessageBox("修改密码成功");
+                    ApplicationManager.ShowInfoMessageBox("修改成功");
                 }
                 else
                 {
-                    ApplicationManager.ShowInfoMessageBox("修改密码失败\r\n" + resM.Message);
+                    ApplicationManager.ShowInfoMessageBox("修改失败\r\n" + resM.Message);
                 }
             }
             else
             {
-                ApplicationManager.ShowInfoMessageBox("修改密码失败\r\n两次输入的密码不一样！");
+                ApplicationManager.ShowInfoMessageBox("修改失败\r\n两次输入的密码不一样！");
             }
         }
     }

@@ -31,7 +31,7 @@ namespace BBBTeaSS.BLL
         /// </summary>
         /// <param name="userID">用户名</param>
         /// <param name="password">密码</param>
-        /// <returns></returns>
+        /// <returns>返回对象</returns>
         public MResultModel<UserModel> Login(string userID, string password)
         {
             UserModel userM = userDAL.GetUserInfoByUserID(userID);
@@ -49,7 +49,7 @@ namespace BBBTeaSS.BLL
         /// </summary>
         /// <param name="ID">用户唯一标识</param>
         /// <param name="password">要修改的密码</param>
-        /// <returns></returns>
+        /// <returns>返回对象</returns>
         public MResultModel<UserModel> UpdatePassword(int ID, string password)
         {
             UserModel userM = userDAL.GetUserInfoByID(ID);
@@ -70,6 +70,76 @@ namespace BBBTeaSS.BLL
             else
             {
                 return MResultModel<UserModel>.GetFailResultM(null, "该用户不存在。");
+            }
+        }
+        /// <summary>
+        /// 根据用户唯一标识获得用户信息
+        /// </summary>
+        /// <param name="ID">用户唯一标识</param>
+        /// <returns>返回对象</returns>
+        public MResultModel<UserModel> GetUserInfoByID(int ID)
+        {
+            UserModel userM = userDAL.GetUserInfoByID(ID);
+            if (userM != null)
+            {
+                return MResultModel<UserModel>.GetSuccessResultM(userM, "用户信息。");
+            }
+            else
+            {
+                return MResultModel<UserModel>.GetFailResultM(null, "该用户不存在。");
+            }
+        }
+        /// <summary>
+        /// 添加一个用户信息
+        /// </summary>
+        /// <param name="userM">用户信息</param>
+        /// <returns>返回对象</returns>
+        public MResultModel AddUserInfo(UserModel userM)
+        {
+            if (userM != null)
+            {
+                userM.Password = EncryptionManager.MD5Encode_32(userM.Password);
+                userDAL.AddUserInfo(userM);
+                return MResultModel.GetSuccessResultM("添加用户信息成功。");
+            }
+            else
+            {
+                return MResultModel.GetFailResultM("添加对象不存在。");
+            }
+        }
+        /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="userM">要修改的用户信息</param>
+        /// <returns>返回结果</returns>
+        public MResultModel UpdateUserInfo(UserModel userM)
+        {
+            if (userM != null)//修改的用户必须存在
+            {
+                UserModel oldUserM = userDAL.GetUserInfoByUserID(userM.UserID);
+                if (oldUserM == null || oldUserM.ID == userM.ID)//用户名不重复
+                {
+                    oldUserM = userDAL.GetUserInfoByID(userM.ID);
+                    if (oldUserM != null)//已存在数据库
+                    {
+                        oldUserM.Name = userM.Name;
+                        oldUserM.UserID = userM.UserID;
+                        userDAL.UpdateUserInfo(oldUserM);
+                        return MResultModel.GetSuccessResultM("修改用户信息成功。");
+                    }
+                    else
+                    {
+                        return MResultModel.GetFailResultM("用户信息不存在。");
+                    }
+                }
+                else
+                {
+                    return MResultModel.GetFailResultM("该用户名已存在。");
+                }
+            }
+            else
+            {
+                return MResultModel.GetFailResultM("修改对象不存在。");
             }
         }
     }

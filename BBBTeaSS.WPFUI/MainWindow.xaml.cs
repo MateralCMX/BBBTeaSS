@@ -29,14 +29,6 @@ namespace BBBTeaSS.WPFUI
             InitializeComponent();
             OpenLoginWindow();
         }
-        /// <summary>
-        /// 页面加载事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
         #region 私有方法
         /// <summary>
         /// 打开登录窗体
@@ -137,6 +129,23 @@ namespace BBBTeaSS.WPFUI
         public void HiddenTopMenu() => TopMenu.Visibility = Visibility.Hidden;
         #endregion
         /// <summary>
+        /// 页面加载事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+        /// <summary>
+        /// 更改密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TMSetPassword_Click(object sender, RoutedEventArgs e)
+        {
+            AddControl(new SetPasswordControl());
+        }
+        /// <summary>
         /// 重新登录
         /// </summary>
         /// <param name="sender"></param>
@@ -219,13 +228,15 @@ namespace BBBTeaSS.WPFUI
 
         }
         /// <summary>
-        /// 更改密码
+        /// 我的信息
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TMSetPassword_Click(object sender, RoutedEventArgs e)
+        private void TMSetUserInfo_Click(object sender, RoutedEventArgs e)
         {
-            AddControl(new SetPasswordControl());
+            UserInfoWindow uw = new UserInfoWindow();
+            uw.ID = ApplicationManager.LoginUserM.ID;
+            uw.ShowDialog();
         }
     }
 }

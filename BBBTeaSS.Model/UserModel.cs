@@ -39,5 +39,10 @@ namespace BBBTeaSS.Model
         /// </summary>
         [ColumnModel("IfDelete", "INTEGER")]
         public bool IfDelete { get; set; }
+        public UserModel()
+        {
+            IfDelete = false;
+            Password = "123456";
+        }
     }
 }
