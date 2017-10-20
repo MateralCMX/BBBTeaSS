@@ -50,7 +50,7 @@ namespace BBBTeaSS.BLL
         /// <param name="ID">用户唯一标识</param>
         /// <param name="password">要修改的密码</param>
         /// <returns>返回对象</returns>
-        public MResultModel<UserModel> UpdatePassword(int ID, string password)
+        public MResultModel<UserModel> UpdatePassword(long ID, string password)
         {
             UserModel userM = userDAL.GetUserInfoByID(ID);
             if (userM != null)
@@ -77,7 +77,7 @@ namespace BBBTeaSS.BLL
         /// </summary>
         /// <param name="ID">用户唯一标识</param>
         /// <returns>返回对象</returns>
-        public MResultModel<UserModel> GetUserInfoByID(int ID)
+        public MResultModel<UserModel> GetUserInfoByID(long ID)
         {
             UserModel userM = userDAL.GetUserInfoByID(ID);
             if (userM != null)
@@ -100,7 +100,7 @@ namespace BBBTeaSS.BLL
             {
                 userM.Password = EncryptionManager.MD5Encode_32(userM.Password);
                 userDAL.AddUserInfo(userM);
-                return MResultModel.GetSuccessResultM("添加用户信息成功。");
+                return MResultModel.GetSuccessResultM("添加成功。");
             }
             else
             {
@@ -125,7 +125,7 @@ namespace BBBTeaSS.BLL
                         oldUserM.Name = userM.Name;
                         oldUserM.UserID = userM.UserID;
                         userDAL.UpdateUserInfo(oldUserM);
-                        return MResultModel.GetSuccessResultM("修改用户信息成功。");
+                        return MResultModel.GetSuccessResultM("修改成功。");
                     }
                     else
                     {
@@ -140,6 +140,34 @@ namespace BBBTeaSS.BLL
             else
             {
                 return MResultModel.GetFailResultM("修改对象不存在。");
+            }
+        }
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public MResultModel DeleteUserInfo(long ID)
+        {
+            userDAL.DeleteUserInfo(ID);
+            return MResultModel.GetSuccessResultM("删除成功");
+        }
+        /// <summary>
+        /// 根据用户名和姓名查询用户信息
+        /// </summary>
+        /// <param name="userID">用户名</param>
+        /// <param name="name">名称</param>
+        /// <returns>用户信息</returns>
+        public MResultPagingModel<List<UserModel>> GetUserInfoByUserIDAndName(string userID, string name, int pageIndex = 1, int pageSize = 10)
+        {
+            MPagingData<List<UserModel>> listM = userDAL.GetUserInfoByUserIDAndName(userID, name, pageIndex, pageSize);
+            if (listM != null)
+            {
+                return MResultPagingModel<List<UserModel>>.GetSuccessResultM(listM, "查询成功");
+            }
+            else
+            {
+                return MResultPagingModel<List<UserModel>>.GetSuccessResultM(null, "查询失败");
             }
         }
     }

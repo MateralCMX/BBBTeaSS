@@ -26,7 +26,7 @@ namespace BBBTeaSS.WPFUI
         /// <summary>
         /// ID
         /// </summary>
-        public int? ID { get; set; }
+        public long? ID { get; set; }
         /// <summary>
         /// 用户业务逻辑对象
         /// </summary>
@@ -62,8 +62,10 @@ namespace BBBTeaSS.WPFUI
             }
             if (userM == null)
             {
-                userM = new UserModel();
-                userM.ID = 0;
+                userM = new UserModel
+                {
+                    ID = 0
+                };
             }
         }
         /// <summary>
@@ -85,7 +87,7 @@ namespace BBBTeaSS.WPFUI
             }
             if (resM.ResultType == MResultType.Success)
             {
-                ApplicationManager.ShowInfoMessageBox("修改成功");
+                ApplicationManager.ShowInfoMessageBox(resM.Message);
                 Close();
             }
             else

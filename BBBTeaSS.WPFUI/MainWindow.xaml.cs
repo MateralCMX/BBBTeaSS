@@ -216,7 +216,7 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMUser_Click(object sender, RoutedEventArgs e)
         {
-
+            AddControl(new UserListControl());
         }
         /// <summary>
         /// 关于
@@ -234,8 +234,10 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMSetUserInfo_Click(object sender, RoutedEventArgs e)
         {
-            UserInfoWindow uw = new UserInfoWindow();
-            uw.ID = ApplicationManager.LoginUserM.ID;
+            UserInfoWindow uw = new UserInfoWindow
+            {
+                ID = ApplicationManager.LoginUserM.ID
+            };
             uw.ShowDialog();
         }
     }

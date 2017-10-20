@@ -2,6 +2,7 @@
 using MateralTools.MDataBase;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace BBBTeaSS.Model
         /// 唯一标识
         /// </summary>
         [ColumnModel("ID", "INTEGER",true)]
-        public int ID { get; set; }
+        public long ID { get; set; }
         /// <summary>
         /// 账户
         /// </summary>
@@ -42,7 +43,7 @@ namespace BBBTeaSS.Model
         public UserModel()
         {
             IfDelete = false;
-            Password = "123456";
+            Password = ConfigurationManager.AppSettings["DefultPassword"] ?? "123456";
         }
     }
 }

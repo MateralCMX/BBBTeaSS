@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BBBTeaSS.WPFUI"
         mc:Ignorable="d"
-        Title="BBBTeaSS" Height="270" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="大哥专用登录" Height="270" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
