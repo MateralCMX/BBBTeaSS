@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBase\密码.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BBBTeaSS.Common\BBBTeaSS.Common.csproj">
+      <Project>{b1ea1355-e4d3-4e81-aed2-3a13f067750b}</Project>
+      <Name>BBBTeaSS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BBBTeaSS.Model\BBBTeaSS.Model.csproj">
+      <Project>{FB6AA272-7414-4AFE-9F22-FA20BB86A564}</Project>
+      <Name>BBBTeaSS.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

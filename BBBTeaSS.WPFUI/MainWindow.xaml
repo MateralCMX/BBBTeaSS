@@ -1,0 +1,45 @@
+﻿<Window x:Class="BBBTeaSS.WPFUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BBBTeaSS.WPFUI"
+        mc:Ignorable="d"
+        Title="大哥专用主界面" Width="800" Height="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="MainPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17" />
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="TopMenu" Grid.Row="0">
+            <MenuItem Header="系统(_S)">
+                <MenuItem x:Name="TMSetUserInfo" Header="我的信息(_M)" Click="TMSetUserInfo_Click"/>
+                <MenuItem x:Name="TMSetPassword" Header="更改密码(_R)" Click="TMSetPassword_Click"/>
+                <MenuItem x:Name="TMRelist" Header="重新登录(_R)" Click="TMRelist_Click"/>
+                <MenuItem x:Name="TMQuit" Header="退出(_E)" Click="TMQuit_Click"/>
+            </MenuItem>
+            <MenuItem Header="库存(_S)">
+                <MenuItem x:Name="TMJoinStock" Header="入库(_P)" Click="TMJoinStock_Click"/>
+                <MenuItem x:Name="TMOutStock" Header="出库(_U)" Click="TMOutStock_Click"/>
+                <MenuItem x:Name="TMQueryStock" Header="查询(_U)" Click="TMQueryStock_Click"/>
+            </MenuItem>
+            <MenuItem Header="基本数据(_B)">
+                <MenuItem x:Name="TMVariety" Header="商品类型(_T)" Click="TMVariety_Click"/>
+                <MenuItem x:Name="TMProduct" Header="商品(_P)" Click="TMProduct_Click"/>
+                <MenuItem x:Name="TMUser" Header="用户(_U)" Click="TMUser_Click"/>
+            </MenuItem>
+            <MenuItem Header="帮助(_H)">
+                <MenuItem x:Name="TMAbout" Header="关于(_A)" Click="TMAbout_Click"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar x:Name="BottomBar" Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock x:Name="LeftTxt" Text="就绪"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="RightTxt" Text="主界面"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
