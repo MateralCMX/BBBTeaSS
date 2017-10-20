@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.WebUI", "BBBTeaSS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.DALTests", "BBBTeaSS.DALTests\BBBTeaSS.DALTests.csproj", "{5EB1D134-7065-41AC-910C-F858AD814722}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.WPFUI", "BBBTeaSS.WPFUI\BBBTeaSS.WPFUI.csproj", "{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5EB1D134-7065-41AC-910C-F858AD814722}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB1D134-7065-41AC-910C-F858AD814722}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EB1D134-7065-41AC-910C-F858AD814722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
