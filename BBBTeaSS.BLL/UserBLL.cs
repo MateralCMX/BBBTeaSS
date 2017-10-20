@@ -32,7 +32,7 @@ namespace BBBTeaSS.BLL
         /// <param name="userID">用户名</param>
         /// <param name="password">密码</param>
         /// <returns></returns>
-        public MResultModel<UserModel> Login(string userID,string password)
+        public MResultModel<UserModel> Login(string userID, string password)
         {
             UserModel userM = userDAL.GetUserInfoByUserID(userID);
             if (userM != null && EncryptionManager.MD5Encode_32(password) == userM.Password)
@@ -42,6 +42,34 @@ namespace BBBTeaSS.BLL
             else
             {
                 return MResultModel<UserModel>.GetFailResultM(null, "用户名或者密码错误。");
+            }
+        }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="ID">用户唯一标识</param>
+        /// <param name="password">要修改的密码</param>
+        /// <returns></returns>
+        public MResultModel<UserModel> UpdatePassword(int ID, string password)
+        {
+            UserModel userM = userDAL.GetUserInfoByID(ID);
+            if (userM != null)
+            {
+                string newPassword = EncryptionManager.MD5Encode_32(password);
+                if (userM.Password != newPassword)
+                {
+                    userM.Password = newPassword;
+                    userDAL.UpdateUserInfo(userM);
+                    return MResultModel<UserModel>.GetSuccessResultM(userM, "修改密码成功。");
+                }
+                else
+                {
+                    return MResultModel<UserModel>.GetFailResultM(null, "新密码不能和旧密码相同。");
+                }
+            }
+            else
+            {
+                return MResultModel<UserModel>.GetFailResultM(null, "该用户不存在。");
             }
         }
     }
