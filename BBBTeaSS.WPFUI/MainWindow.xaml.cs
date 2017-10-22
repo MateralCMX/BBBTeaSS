@@ -198,7 +198,7 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMVariety_Click(object sender, RoutedEventArgs e)
         {
-
+            AddControl(new VarietyListControl());
         }
         /// <summary>
         /// 商品

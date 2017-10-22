@@ -191,7 +191,11 @@ namespace BBBTeaSS.WPFUI
             PageM.PagingIndex++;
             Query();
         }
-
+        /// <summary>
+        /// 跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnGotoPage_Click(object sender, RoutedEventArgs e)
         {
             string pageIndex = TextPageIndex.Text.Trim();

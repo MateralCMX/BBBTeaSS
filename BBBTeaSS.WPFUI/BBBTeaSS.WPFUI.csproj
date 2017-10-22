@@ -82,6 +82,12 @@
     <Compile Include="UserListControl.xaml.cs">
       <DependentUpon>UserListControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VarietyInfoWindow.xaml.cs">
+      <DependentUpon>VarietyInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VarietyListControl.xaml.cs">
+      <DependentUpon>VarietyListControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +117,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VarietyInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VarietyListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -155,9 +155,11 @@ namespace BBBTeaSS.BLL
         /// <summary>
         /// 根据用户名和姓名查询用户信息
         /// </summary>
-        /// <param name="userID">用户名</param>
-        /// <param name="name">名称</param>
-        /// <returns>用户信息</returns>
+        /// <param name="userID">用户ID</param>
+        /// <param name="name">用户名</param>
+        /// <param name="pageIndex">分页页数</param>
+        /// <param name="pageSize">分页条数</param>
+        /// <returns></returns>
         public MResultPagingModel<List<UserModel>> GetUserInfoByUserIDAndName(string userID, string name, int pageIndex = 1, int pageSize = 10)
         {
             MPagingData<List<UserModel>> listM = userDAL.GetUserInfoByUserIDAndName(userID, name, pageIndex, pageSize);
