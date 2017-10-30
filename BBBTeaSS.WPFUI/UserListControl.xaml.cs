@@ -204,11 +204,11 @@ namespace BBBTeaSS.WPFUI
                 int pageIndexNum = Convert.ToInt32(pageIndex);
                 if (pageIndexNum < 1)
                 {
-                    ApplicationManager.ShowInfoMessageBox("脑残？页数不会是负数!");
+                    ApplicationManager.ShowInfoMessageBox("页数不会是负数！");
                 }
                 else if (pageIndexNum > PageM.PagingCount)
                 {
-                    ApplicationManager.ShowInfoMessageBox("制杖？页数会大于总页数?");
+                    ApplicationManager.ShowInfoMessageBox("页数不能大于总页数！");
                 }
                 else
                 {
@@ -218,7 +218,7 @@ namespace BBBTeaSS.WPFUI
             }
             else
             {
-                ApplicationManager.ShowInfoMessageBox("看不懂噶？页数只可以是数字!");
+                ApplicationManager.ShowInfoMessageBox("页数只可以是数字！");
             }
         }
     }

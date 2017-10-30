@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.BLL", "BBBTeaSS.BLL\BBBTeaSS.BLL.csproj", "{FF6FC15B-E787-4555-97A5-E70FB37A21D6}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.DALTests", "BBBTeaSS.DALTests\BBBTeaSS.DALTests.csproj", "{5EB1D134-7065-41AC-910C-F858AD814722}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.WPFUI", "BBBTeaSS.WPFUI\BBBTeaSS.WPFUI.csproj", "{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBBTeaSS.BLLTests", "BBBTeaSS.BLLTests\BBBTeaSS.BLLTests.csproj", "{94A52604-AB8D-41A1-9793-81D7CD1C1B91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09C95584-AEEE-4C66-95C3-6CFCBE03AFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A52604-AB8D-41A1-9793-81D7CD1C1B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A52604-AB8D-41A1-9793-81D7CD1C1B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A52604-AB8D-41A1-9793-81D7CD1C1B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A52604-AB8D-41A1-9793-81D7CD1C1B91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

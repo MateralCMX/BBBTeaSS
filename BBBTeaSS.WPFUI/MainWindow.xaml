@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BBBTeaSS.WPFUI"
         mc:Ignorable="d"
-        Title="大哥专用主界面" Width="800" Height="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="科标所出入库管理系统" Width="950" Height="600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"  ResizeMode="NoResize">
     <Grid x:Name="MainPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="17" />
@@ -29,17 +29,19 @@
                 <MenuItem x:Name="TMProduct" Header="商品(_P)" Click="TMProduct_Click"/>
                 <MenuItem x:Name="TMUser" Header="用户(_U)" Click="TMUser_Click"/>
             </MenuItem>
-            <MenuItem Header="帮助(_H)">
+            <!--<MenuItem Header="帮助(_H)">
                 <MenuItem x:Name="TMAbout" Header="关于(_A)" Click="TMAbout_Click"/>
-            </MenuItem>
+            </MenuItem>-->
         </Menu>
         <StatusBar x:Name="BottomBar" Grid.Row="2">
             <StatusBarItem>
                 <TextBlock x:Name="LeftTxt" Text="就绪"/>
+                
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
                 <TextBlock x:Name="RightTxt" Text="主界面"/>
             </StatusBarItem>
         </StatusBar>
+        <Image HorizontalAlignment="Left" Height="534" Grid.Row="1" VerticalAlignment="Top" Width="944" x:Name="welcome" />
     </Grid>
 </Window>

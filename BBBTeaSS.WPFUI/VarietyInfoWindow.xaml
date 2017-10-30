@@ -16,7 +16,7 @@
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="1" Margin="10,0">种类名称</Label>
-        <TextBox x:Name="TextName" Grid.Row="2" Margin="10,0"></TextBox>
+        <TextBox x:Name="TextName" Grid.Row="2" Margin="10,0" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
         <Button x:Name="BtnOk" Grid.Row="4" Margin="10,0" Click="BtnOk_Click">确定</Button>
     </Grid>
 </Window>

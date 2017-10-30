@@ -90,6 +90,7 @@ namespace BBBTeaSS.WPFUI
             if(resM.ResultType==MResultType.Success)
             {
                 ApplicationManager.ShowInfoMessageBox(resM.Message);
+                Close();
             }
             else
             {

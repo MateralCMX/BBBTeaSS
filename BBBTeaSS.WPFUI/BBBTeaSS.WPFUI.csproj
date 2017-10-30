@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BBBTeaSS.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -73,8 +76,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="JoinStockInfoListWindow.xaml.cs">
+      <DependentUpon>JoinStockInfoListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OutStockInfoListControl.xaml.cs">
+      <DependentUpon>OutStockInfoListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OutStockInfoListWindow.xaml.cs">
+      <DependentUpon>OutStockInfoListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInfoWindow.xaml.cs">
+      <DependentUpon>ProductInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductListControl.xaml.cs">
+      <DependentUpon>ProductListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SetPasswordControl.xaml.cs">
       <DependentUpon>SetPasswordControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockWindow.xaml.cs">
+      <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInfoWindow.xaml.cs">
       <DependentUpon>UserInfoWindow.xaml</DependentUpon>
@@ -88,6 +109,10 @@
     <Compile Include="VarietyListControl.xaml.cs">
       <DependentUpon>VarietyListControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="JoinStockInfoListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,7 +133,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OutStockInfoListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OutStockInfoListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SetPasswordControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\DataGridStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +219,23 @@
       <Project>{fb6aa272-7414-4afe-9f22-fa20bb86a564}</Project>
       <Name>BBBTeaSS.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BBBTeaSS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close0.png" />
+    <Resource Include="Images\close1.png" />
+    <Resource Include="Images\cloud.png" />
+    <Resource Include="Images\loginbody.png" />
+    <Resource Include="Images\mini0.png" />
+    <Resource Include="Images\mini1.png" />
+    <Resource Include="Images\sun2.png" />
+    <Resource Include="Images\yezi2.png" />
+    <Resource Include="Images\yezi3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\welcome.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net46\System.Data.SQLite.Core.targets')" />

@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="BBBTeaSS.WPFUI.ProductListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BBBTeaSS.WPFUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="950" Background="White" Loaded="ProductControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" Margin="5">
+            <Label VerticalAlignment="Center" Grid.Row="0">商品名称：</Label>
+            <TextBox x:Name="TextProductName" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"></TextBox>
+
+            <Label VerticalAlignment="Center" Grid.Row="0">厂家：</Label>
+            <TextBox x:Name="TextManufactorName" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"></TextBox>
+
+            <Label VerticalAlignment="Center" Grid.Row="0">联系电话：</Label>
+            <TextBox x:Name="TextPhoneNumber" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"></TextBox>
+
+            <Label VerticalAlignment="Center" Grid.Row="0">种类：</Label>
+            <ComboBox x:Name="ComboVarietyName" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="20"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="0">地区：</Label>
+            <TextBox x:Name="TextRegionName" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"></TextBox>
+
+            <Button x:Name="BtnSearch" Width="60" Height="20" Margin="10,0,0,0" Click="BtnSearch_Click">搜索</Button>
+            <Button x:Name="BtnAdd" Width="60" Height="20" Margin="10,0,0,0" Click="BtnAdd_Click">新增</Button>
+        </WrapPanel>
+        <DataGrid Grid.Row="1" x:Name="MainDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="编号" Width="40" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="商品名称" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Manufactor}" Header="生产厂家" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="联系电话" Width="120"/>
+                <DataGridTextColumn Binding="{Binding VarietyName}" Header="种类名称" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Region}" Header="地区" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Remark}" Header="备注" Width="180"/>
+                <DataGridTemplateColumn x:Name="EditCl" Header="修改" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="EditButton_Click">修改</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="DeleteCl" Header="删除" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DeleteButton_Click">删除</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="JoinStockCl" Header="入库" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="JoinStockButton_Click">入库</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <WrapPanel Grid.Row="2">
+            <Button x:Name="BtnUpPage" Click="BtnUpPage_Click" Height="20">上一页</Button>
+            <Label x:Name="LabelPageCount">1/100</Label>
+            <Button x:Name="BtnDownPage" Click="BtnDownPage_Click" Height="20">下一页</Button>
+            <Button x:Name="BtnGotoPage" Margin="10,0,0,0" Click="BtnGotoPage_Click" Height="20">跳转到第</Button>
+            <TextBox x:Name="TextPageIndex" MinWidth="40" TextAlignment="Center" VerticalContentAlignment="Center" Height="20">1</TextBox>
+            <Label>页</Label>
+        </WrapPanel>
+    </Grid>
+</UserControl>

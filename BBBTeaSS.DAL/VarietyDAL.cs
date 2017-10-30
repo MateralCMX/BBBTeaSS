@@ -80,7 +80,7 @@ namespace BBBTeaSS.DAL
             return varietyM;
         }
         /// <summary>
-        /// 根据种类名称和名称查询种类信息
+        /// 根据种类名称查询种类信息
         /// </summary>
         /// <param name="Name">种类名称</param>
         /// <param name="pageIndex">分页页数</param>

@@ -20,18 +20,19 @@ using System.Windows.Shapes;
 namespace BBBTeaSS.WPFUI
 {
     /// <summary>
-    /// VarietyListControl.xaml 的交互逻辑
+    /// OutStockInfoListControl.xaml 的交互逻辑
     /// </summary>
-    public partial class VarietyListControl : UserControl
+    public partial class OutStockInfoListControl : UserControl
     {
         #region 成员
-        private VarietyBLL varietyBLL { get; set; }
+        private StockBLL stockBll { get; set; }
         private MPagingModel pageM { get; set; }
-        #endregion
         /// <summary>
-        /// 构造方法
+        /// 商品窗口模式
         /// </summary>
-        public VarietyListControl()
+        public QueryStockWindowMode Mode { get; set; }
+        #endregion
+        public OutStockInfoListControl()
         {
             InitializeComponent();
         }
@@ -41,26 +42,63 @@ namespace BBBTeaSS.WPFUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void VarietyControl_Loaded(object sender, RoutedEventArgs e)
+        private void OutStockControl_Loaded(object sender, RoutedEventArgs e)
         {
-            varietyBLL = new VarietyBLL();
+            stockBll = new StockBLL();
+            stockBll.GetStockInfoByProductID(1, 1);
+            switch (Mode)
+            {
+                case QueryStockWindowMode.Query:
+                    SelectCl.Visibility = Visibility.Visible;
+                    OutStockCl.Visibility = Visibility.Hidden;
+                    break;
+                case QueryStockWindowMode.OutStock:
+                    SelectCl.Visibility = Visibility.Hidden;
+                    OutStockCl.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
             pageM = new MPagingModel
             {
-                DataCount = 1,
-                PagingCount = 1,
                 PagingIndex = 1,
                 PagingSize = 10
             };
+            BindVarietyInfo();
             Query();
+        }
+        /// <summary>
+        /// 绑定种类信息
+        /// </summary>
+        private void BindVarietyInfo()
+        {
+            MResultPagingModel<List<VarietyModel>> resM = new VarietyBLL().GetVarietyInfoByIDAndName("", 1, 999);
+            if (resM.ResultType == MResultType.Success)
+            {
+                resM.Data.Insert(0, new VarietyModel { ID = 0, Name = "全部" });
+                ComboVarietyName.SelectedValuePath = "ID";
+                ComboVarietyName.DisplayMemberPath = "Name";
+                ComboVarietyName.ItemsSource = resM.Data;
+                ComboVarietyName.SelectedIndex = 0;
+            }
+            else
+            {
+                ApplicationManager.ShowErrorMessageBox("程序出错了");
+            }
         }
         /// <summary>
         /// 查询方法
         /// </summary>
         private void Query()
         {
-            string Name = TextName.Text.Trim();
-            MResultPagingModel<List<VarietyModel>> resM = varietyBLL.GetVarietyInfoByIDAndName(Name, pageM.PagingIndex, pageM.PagingSize);
-            if(resM.ResultType==MResultType.Success)
+            string ProductName = TextProductName.Text.Trim();
+            string ManufactorName = TextManufactorName.Text.Trim();
+            string PhoneNumber = TextPhoneNumber.Text.Trim();
+            long VarietyID = (long)ComboVarietyName.SelectedValue;
+            string RegionName = TextRegionName.Text.Trim();
+
+            MResultPagingModel<List<StockViewModel>> resM = stockBll.GetStockInfoByWhere(ProductName, ManufactorName, PhoneNumber, VarietyID, RegionName, pageM.PagingIndex, pageM.PagingSize);
+            if (resM.ResultType == MResultType.Success)
             {
                 pageM = resM.PagingInfo;
                 BindList(resM.Data);
@@ -73,11 +111,11 @@ namespace BBBTeaSS.WPFUI
         /// <summary>
         /// 绑定列表信息
         /// </summary>
-        /// <param name="listVarietyM"></param>
-        private void BindList(List<VarietyModel> listVarietyM)
+        /// <param name="listProductM"></param>
+        private void BindList(List<StockViewModel> listProductM)
         {
-            MainDataGrid.ItemsSource = listVarietyM;
-            BindPaginginfo(); 
+            MainDataGrid.ItemsSource = listProductM;
+            BindPaginginfo();
         }
         /// <summary>
         /// 绑定分页信息
@@ -89,66 +127,38 @@ namespace BBBTeaSS.WPFUI
             BtnUpPage.IsEnabled = pageM.PagingIndex != 1;
             BtnDownPage.IsEnabled = pageM.PagingIndex != pageM.PagingCount;
         }
-        
         /// <summary>
-        /// 搜索按钮
+        /// 查看详情按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
-            Query();
-        }
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            VarietyInfoWindow vw = new VarietyInfoWindow();
-            vw.ShowDialog();
-            Query();
-        }
-        /// <summary>
-        /// 修改按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (MainDataGrid.ItemsSource is List<VarietyModel> listM)
+            if (MainDataGrid.ItemsSource is List<StockViewModel> listM)
             {
-                VarietyModel varietyModel = new VarietyModel();
-                varietyModel = listM[MainDataGrid.SelectedIndex];
-                VarietyInfoWindow vw = new VarietyInfoWindow
-                {
-                    ID = varietyModel.ID
-                };
-                vw.ShowDialog();
+                StockViewModel stockM = listM[MainDataGrid.SelectedIndex];
+                StockWindow jw = new StockWindow();
+                jw.ProductID = stockM.ProductID;
+                jw.ProductName = stockM.ProductName;
+                jw.ShowDialog();
+            }
+        }
+        /// <summary>
+        /// 出库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OutStockButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainDataGrid.ItemsSource is List<StockViewModel> listM)
+            {
+                StockViewModel stockM = listM[MainDataGrid.SelectedIndex];
+                OutStockInfoListWindow jw = new OutStockInfoListWindow();
+                jw.StockM = stockM;
+                jw.ShowDialog();
                 Query();
             }
         }
-        /// <summary>
-        /// 删除按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("是否要删除该种类？","提示",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)
-            {
-                if(MainDataGrid.ItemsSource is List<VarietyModel> listM)
-                {
-                    VarietyModel varietyModel = listM[MainDataGrid.SelectedIndex];
-
-                    MResultModel resM = varietyBLL.DeleteVarietyInfo(varietyModel.ID);
-                    ApplicationManager.ShowInfoMessageBox(resM.Message);
-                    Query();
-                } 
-            }
-        }
-
         /// <summary>
         /// 上一页
         /// </summary>
@@ -170,7 +180,7 @@ namespace BBBTeaSS.WPFUI
             Query();
         }
         /// <summary>
-        /// 跳转
+        /// 跳转页
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -199,8 +209,14 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("页数只可以是数字！");
             }
         }
-
-
-
+        /// <summary>
+        /// 搜索按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Query();
+        }
     }
 }
