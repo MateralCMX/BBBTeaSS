@@ -36,6 +36,7 @@ namespace BBBTeaSS.WPFUI
         /// </summary>
         private UserModel userM;
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -43,6 +44,7 @@ namespace BBBTeaSS.WPFUI
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -68,6 +70,7 @@ namespace BBBTeaSS.WPFUI
                 };
             }
         }
+
         /// <summary>
         /// 确定按钮事件
         /// </summary>
@@ -95,6 +98,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("修改失败\r\n" + resM.Message);
             }
         }
+
         /// <summary>
         /// 绑定用户信息
         /// </summary>
@@ -103,6 +107,7 @@ namespace BBBTeaSS.WPFUI
             userM.Name = TextName.Text.Trim();
             userM.UserID = TextUserName.Text.Trim();
         }
+
         /// <summary>
         /// 设置用户信息
         /// </summary>

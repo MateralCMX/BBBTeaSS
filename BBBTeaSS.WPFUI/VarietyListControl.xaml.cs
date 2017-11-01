@@ -28,6 +28,7 @@ namespace BBBTeaSS.WPFUI
         private VarietyBLL varietyBLL { get; set; }
         private MPagingModel pageM { get; set; }
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -53,6 +54,7 @@ namespace BBBTeaSS.WPFUI
             };
             Query();
         }
+
         /// <summary>
         /// 查询方法
         /// </summary>
@@ -70,6 +72,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowErrorMessageBox("程序出错了");
             }
         }
+
         /// <summary>
         /// 绑定列表信息
         /// </summary>
@@ -79,6 +82,7 @@ namespace BBBTeaSS.WPFUI
             MainDataGrid.ItemsSource = listVarietyM;
             BindPaginginfo(); 
         }
+
         /// <summary>
         /// 绑定分页信息
         /// </summary>
@@ -99,6 +103,7 @@ namespace BBBTeaSS.WPFUI
         {
             Query();
         }
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -110,6 +115,7 @@ namespace BBBTeaSS.WPFUI
             vw.ShowDialog();
             Query();
         }
+
         /// <summary>
         /// 修改按钮
         /// </summary>
@@ -129,6 +135,7 @@ namespace BBBTeaSS.WPFUI
                 Query();
             }
         }
+
         /// <summary>
         /// 删除按钮
         /// </summary>
@@ -159,6 +166,7 @@ namespace BBBTeaSS.WPFUI
             pageM.PagingIndex--;
             Query();
         }
+
         /// <summary>
         /// 下一页
         /// </summary>
@@ -169,6 +177,7 @@ namespace BBBTeaSS.WPFUI
             pageM.PagingIndex++;
             Query();
         }
+
         /// <summary>
         /// 跳转
         /// </summary>
@@ -199,8 +208,5 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("页数只可以是数字！");
             }
         }
-
-
-
     }
 }

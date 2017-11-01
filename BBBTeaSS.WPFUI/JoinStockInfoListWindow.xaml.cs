@@ -22,11 +22,18 @@ namespace BBBTeaSS.WPFUI
     /// </summary>
     public partial class JoinStockInfoListWindow : Window
     {
+        #region 成员
         public ProductViewModel productM { get; set; }
+        #endregion
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         public JoinStockInfoListWindow()
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// 窗体加载时
         /// </summary>
@@ -43,6 +50,7 @@ namespace BBBTeaSS.WPFUI
                 this.Close();
             }
         }
+
         /// <summary>
         /// 确定按钮
         /// </summary>

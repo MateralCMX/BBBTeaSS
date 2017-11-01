@@ -63,6 +63,7 @@ namespace BBBTeaSS.DAL
             StockModel stockM = ConvertManager.DataTableToList<StockModel>(ds.Tables[0]).FirstOrDefault();
             return stockM;
         }
+
         /// <summary>
         /// 根据商品名称查询商品信息
         /// </summary>
@@ -74,7 +75,7 @@ namespace BBBTeaSS.DAL
         /// <param name="Remark">备注</param>
         /// <param name="pageIndex">分页页数</param>
         /// <param name="pageSize">分页条数</param>
-        /// <returns></returns>
+        /// <returns>返回商品信息</returns>
         public MPagingData<List<StockViewModel>> GetStockInfoByWhere(string name, string manufactor, string phone, long varietyID, string region, int pageIndex = 1, int pageSize = 10)
         {
             string whereStr = "";
@@ -131,7 +132,13 @@ namespace BBBTeaSS.DAL
             pageProductM.PageInfo.PagingSize = pageSize;
             return pageProductM;
         }
-
+        
+        /// <summary>
+        /// 根据商品ID查询库存信息
+        /// </summary>
+        /// <param name="productID">商品ID</param>
+        /// <param name="stockType">出入库标记[1为出库，2为入库]</param>
+        /// <returns>返回库存信息</returns>
         public List<StockModel> GetStockInfoByProductID(long productID, long? stockType)
         {
             TSQLModel tsqlM = new TSQLModel();

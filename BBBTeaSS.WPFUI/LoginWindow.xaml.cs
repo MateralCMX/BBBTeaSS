@@ -26,11 +26,16 @@ namespace BBBTeaSS.WPFUI
         #region 成员
         private UserBLL userBLL;
         #endregion
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         public LoginWindow()
         {
             InitializeComponent();
             userBLL = new UserBLL();
         }
+
         /// <summary>
         /// 登录按钮事件
         /// </summary>
@@ -51,6 +56,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("登录失败\r\n" + resM.Message);
             }
         }
+
         /// <summary>
         /// 窗口加载时
         /// </summary>
@@ -64,6 +70,7 @@ namespace BBBTeaSS.WPFUI
             Storyboard baiyun = Resources["cloudMove"] as Storyboard;
             baiyun.Begin();
         }
+
         /// <summary>
         /// 鼠标点击
         /// </summary>
@@ -85,6 +92,7 @@ namespace BBBTeaSS.WPFUI
                 ig.Source = bp;
             }
         }
+
         /// <summary>
         /// 鼠标离开
         /// </summary>
@@ -106,6 +114,7 @@ namespace BBBTeaSS.WPFUI
                 ig.Source = bp;
             }
         }
+
         /// <summary>
         /// 鼠标左键按下
         /// </summary>
@@ -120,6 +129,7 @@ namespace BBBTeaSS.WPFUI
             }
             else this.WindowState = System.Windows.WindowState.Minimized; ;
         }
+
         /// <summary>
         /// 鼠标按下
         /// </summary>

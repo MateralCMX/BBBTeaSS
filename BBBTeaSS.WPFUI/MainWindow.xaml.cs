@@ -23,7 +23,11 @@ namespace BBBTeaSS.WPFUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// 实例time
+        /// </summary>
         DispatcherTimer timer = new DispatcherTimer();
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -34,6 +38,7 @@ namespace BBBTeaSS.WPFUI
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
+
         #region 私有方法
         /// <summary>
         /// 打开登录窗体
@@ -103,6 +108,7 @@ namespace BBBTeaSS.WPFUI
             SetLeftTxt("就绪");
         }
         #endregion
+
         #region 公有方法
         /// <summary>
         /// 设置左边提示文本
@@ -140,6 +146,7 @@ namespace BBBTeaSS.WPFUI
         void timer_Tick(object sender, EventArgs e)=> this.LeftTxt.Text = string.Concat("当前时间：", DateTime.Now.ToString("yyyy年MM月dd日 hh:mm:ss"));
 
         #endregion
+
         /// <summary>
         /// 页面加载事件
         /// </summary>
@@ -154,6 +161,7 @@ namespace BBBTeaSS.WPFUI
             welcome.Source = bi;
 
         }
+
         /// <summary>
         /// 更改密码
         /// </summary>
@@ -163,6 +171,7 @@ namespace BBBTeaSS.WPFUI
         {
             AddControl(new SetPasswordControl());
         }
+
         /// <summary>
         /// 重新登录
         /// </summary>
@@ -173,6 +182,7 @@ namespace BBBTeaSS.WPFUI
             ApplicationManager.LoginUserM = null;
             OpenLoginWindow();
         }
+
         /// <summary>
         /// 退出
         /// </summary>
@@ -182,6 +192,7 @@ namespace BBBTeaSS.WPFUI
         {
             Application.Current.Shutdown();
         }
+
         /// <summary>
         /// 入库
         /// </summary>
@@ -193,6 +204,7 @@ namespace BBBTeaSS.WPFUI
             plc.Mode = ProductWindowMode.JoinStock;
             AddControl(plc);
         }
+
         /// <summary>
         /// 出库
         /// </summary>
@@ -204,6 +216,7 @@ namespace BBBTeaSS.WPFUI
             osl.Mode = QueryStockWindowMode.OutStock;
             AddControl(osl);
         }
+
         /// <summary>
         /// 库存查询
         /// </summary>
@@ -215,6 +228,7 @@ namespace BBBTeaSS.WPFUI
             osl.Mode = QueryStockWindowMode.Query;
             AddControl(osl);
         }
+
         /// <summary>
         /// 商品类型
         /// </summary>
@@ -224,6 +238,7 @@ namespace BBBTeaSS.WPFUI
         {
             AddControl(new VarietyListControl());
         }
+
         /// <summary>
         /// 商品
         /// </summary>
@@ -235,6 +250,9 @@ namespace BBBTeaSS.WPFUI
             plc.Mode = ProductWindowMode.Product;
             AddControl(plc);
         }
+
+
+
         /// <summary>
         /// 用户
         /// </summary>

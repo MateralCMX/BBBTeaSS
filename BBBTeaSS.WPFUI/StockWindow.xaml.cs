@@ -22,17 +22,35 @@ namespace BBBTeaSS.WPFUI
     /// </summary>
     public partial class StockWindow : Window
     {
+        #region 成员
         public long ProductID = 0;
         public string ProductName = "";
 
         private List<StockModel> JoinStockM = null;
         private List<StockModel> OutStockM = null;
         private StockBLL stockBll { get; set; }
+        #endregion
+
         public StockWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 窗体加载时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.TextProductName.Text = ProductName;
+            stockBll = new StockBLL();
+            QueryJoin();
+        }
+
+        /// <summary>
+        /// 查询入库方法
+        /// </summary>
         private void QueryJoin()
         {
             if (OutStockM == null)
@@ -49,11 +67,22 @@ namespace BBBTeaSS.WPFUI
             }
             BindList(JoinStockM);
         }
+
+        /// <summary>
+        /// 入库单提交按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnJoin_Click(object sender, RoutedEventArgs e)
         {
             QueryJoin();
         }
 
+        /// <summary>
+        /// 出库单提交按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnOut_Click(object sender, RoutedEventArgs e)
         {
             if (OutStockM == null)
@@ -79,11 +108,6 @@ namespace BBBTeaSS.WPFUI
         {
             MainDataGrid.ItemsSource = listProductM;
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.TextProductName.Text = ProductName;
-            stockBll = new StockBLL();
-            QueryJoin();
-        }
+
     }
 }

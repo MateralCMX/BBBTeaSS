@@ -33,6 +33,10 @@ namespace BBBTeaSS.WPFUI
         /// </summary>
         public ProductWindowMode Mode { get; set; }
         #endregion
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         public ProductListControl()
         {
             InitializeComponent();
@@ -71,6 +75,7 @@ namespace BBBTeaSS.WPFUI
             BindVarietyInfo();
             Query();
         }
+
         /// <summary>
         /// 绑定种类信息
         /// </summary>
@@ -90,6 +95,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowErrorMessageBox("NOPE！程序出错了");
             }
         }
+
         /// <summary>
         /// 查询方法
         /// </summary>
@@ -121,6 +127,7 @@ namespace BBBTeaSS.WPFUI
             MainDataGrid.ItemsSource = listProductM;
             BindPaginginfo();
         }
+
         /// <summary>
         /// 绑定分页信息
         /// </summary>
@@ -131,6 +138,7 @@ namespace BBBTeaSS.WPFUI
             BtnUpPage.IsEnabled = pageM.PagingIndex != 1;
             BtnDownPage.IsEnabled = pageM.PagingIndex != pageM.PagingCount;
         }
+
         /// <summary>
         /// 修改按钮
         /// </summary>
@@ -149,6 +157,7 @@ namespace BBBTeaSS.WPFUI
                 Query();
             }
         }
+
         /// <summary>
         /// 删除按钮
         /// </summary>
@@ -168,6 +177,7 @@ namespace BBBTeaSS.WPFUI
                 }
             }
         }
+
         /// <summary>
         /// 上一页
         /// </summary>
@@ -178,6 +188,7 @@ namespace BBBTeaSS.WPFUI
             pageM.PagingIndex--;
             Query();
         }
+
         /// <summary>
         /// 下一页
         /// </summary>
@@ -188,6 +199,7 @@ namespace BBBTeaSS.WPFUI
             pageM.PagingIndex++;
             Query();
         }
+
         /// <summary>
         /// 跳转页
         /// </summary>
@@ -218,6 +230,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("页数只可以是数字！");
             }
         }
+
         /// <summary>
         /// 搜索按钮
         /// </summary>
@@ -227,6 +240,7 @@ namespace BBBTeaSS.WPFUI
         {
             Query();
         }
+
         /// <summary>
         /// 添加按钮
         /// </summary>
@@ -238,6 +252,7 @@ namespace BBBTeaSS.WPFUI
             pw.ShowDialog();
             Query();
         }
+
         /// <summary>
         /// 入库
         /// </summary>

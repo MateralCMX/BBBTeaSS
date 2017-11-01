@@ -31,7 +31,7 @@ namespace BBBTeaSS.BLL
         /// 根据唯一标识获取种类信息
         /// </summary>
         /// <param name="ID">种类唯一标识</param>
-        /// <returns>返回种类实体</returns>
+        /// <returns>返回种类信息</returns>
         public MResultModel<VarietyModel> GetVarietyInfoByID(long ID)
         {
             VarietyModel varietyM = varietyDAL.GetVarietyInfoByID(ID);
@@ -49,7 +49,7 @@ namespace BBBTeaSS.BLL
         /// 添加一个种类信息
         /// </summary>
         /// <param name="varietyM">种类信息</param>
-        /// <returns>返回种类实体</returns>
+        /// <returns>返回种类信息</returns>
         public MResultModel AddVarietyInfo(VarietyModel varietyM)
         {
             if (varietyM!=null)
@@ -67,7 +67,7 @@ namespace BBBTeaSS.BLL
         /// 修改一个种类信息
         /// </summary>
         /// <param name="varietyM">种类型</param>
-        /// <returns>返回种类实体</returns>
+        /// <returns>返回种类信息</returns>
         public MResultModel UpdateVarietyInfo(VarietyModel varietyM)
         {
             if (varietyM!=null)
@@ -102,7 +102,7 @@ namespace BBBTeaSS.BLL
         /// 删除一个种类信息
         /// </summary>
         /// <param name="ID">唯一标示</param>
-        /// <returns>返回种类实体</returns>
+        /// <returns>返回种类信息</returns>
         public MResultModel DeleteVarietyInfo(long ID)
         {
             varietyDAL.DeleteVarietyInfo(ID);
@@ -115,7 +115,7 @@ namespace BBBTeaSS.BLL
         /// <param name="Name">种类名称</param>
         /// <param name="pageIndex">分页页数</param>
         /// <param name="pageSize">分页条数</param>
-        /// <returns></returns>
+        /// <returns>返回种类信息</returns>
         public MResultPagingModel<List<VarietyModel>> GetVarietyInfoByIDAndName(string Name,int pageIndex =1,int pageSize = 10)
         {
             MPagingData<List<VarietyModel>> listM = varietyDAL.GetVarietyInfoByIDAndName(Name, pageIndex, pageSize);

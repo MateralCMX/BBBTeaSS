@@ -32,6 +32,7 @@ namespace BBBTeaSS.WPFUI
         private UserBLL userBLL { get; set; }
         private MPagingModel PageM { get; set; }
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -39,6 +40,7 @@ namespace BBBTeaSS.WPFUI
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// 窗体加载事件
         /// </summary>
@@ -56,6 +58,7 @@ namespace BBBTeaSS.WPFUI
             };
             Query();
         }
+
         /// <summary>
         /// 修改按钮
         /// </summary>
@@ -74,6 +77,7 @@ namespace BBBTeaSS.WPFUI
                 Query();
             }
         }
+
         /// <summary>
         /// 删除按钮
         /// </summary>
@@ -99,6 +103,7 @@ namespace BBBTeaSS.WPFUI
                 }
             }
         }
+
         /// <summary>
         /// 重置密码按钮
         /// </summary>
@@ -114,6 +119,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowInfoMessageBox("密码已重置为:" + userM.Password);
             }
         }
+
         /// <summary>
         /// 添加按钮
         /// </summary>
@@ -125,6 +131,7 @@ namespace BBBTeaSS.WPFUI
             uw.ShowDialog();
             Query();
         }
+
         /// <summary>
         /// 查询方法
         /// </summary>
@@ -143,6 +150,7 @@ namespace BBBTeaSS.WPFUI
                 ApplicationManager.ShowErrorMessageBox("程序出错了");
             }
         }
+
         /// <summary>
         /// 绑定列表显示
         /// </summary>
@@ -152,6 +160,7 @@ namespace BBBTeaSS.WPFUI
             MainDataGrid.ItemsSource = listUserM;
             BindPaginginfo();
         }
+
         /// <summary>
         /// 查询按钮
         /// </summary>
@@ -161,6 +170,7 @@ namespace BBBTeaSS.WPFUI
         {
             Query();
         }
+
         /// <summary>
         /// 绑定分页信息
         /// </summary>
@@ -171,6 +181,7 @@ namespace BBBTeaSS.WPFUI
             BtnUpPage.IsEnabled = PageM.PagingIndex != 1;
             BtnDownPage.IsEnabled = PageM.PagingIndex != PageM.PagingCount;
         }
+
         /// <summary>
         /// 上一页
         /// </summary>
@@ -181,6 +192,7 @@ namespace BBBTeaSS.WPFUI
             PageM.PagingIndex--;
             Query();
         }
+
         /// <summary>
         /// 下一页
         /// </summary>
@@ -191,6 +203,7 @@ namespace BBBTeaSS.WPFUI
             PageM.PagingIndex++;
             Query();
         }
+
         /// <summary>
         /// 跳转
         /// </summary>

@@ -22,11 +22,12 @@ namespace BBBTeaSS.WPFUI
     /// </summary>
     public partial class ProductInfoWindow : Window
     {
-        #region
+        #region 成员
         public long? ID { get; set; }
         public ProductBLL productBLL;
         public ProductModel productModel;
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -34,7 +35,6 @@ namespace BBBTeaSS.WPFUI
         {
             InitializeComponent();
         }
-
 
         /// <summary>
         /// 窗体加载时
@@ -104,6 +104,7 @@ namespace BBBTeaSS.WPFUI
             productModel.Region = TextRegionName.Text.Trim();
             productModel.Remark = Remark.Text.Trim();
         }
+
         /// <summary>
         /// 设置种类信息
         /// </summary>

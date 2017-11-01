@@ -34,6 +34,7 @@ namespace BBBTeaSS.BLL
         {
             stockDAL.AddStockInfo(stockM);
         }
+
         /// <summary>
         /// 根据商品名称查询商品信息
         /// </summary>
@@ -59,11 +60,12 @@ namespace BBBTeaSS.BLL
                 return MResultPagingModel<List<StockViewModel>>.GetFailResultM(null, "查询失败");
             }
         }
+
         /// <summary>
         /// 根据商品ID查询出入库信息
         /// </summary>
-        /// <param name="productID"></param>
-        /// <returns></returns>
+        /// <param name="productID">ID</param>
+        /// <returns>返回入库信息</returns>
         public MResultModel<List<StockModel>> GetStockInfoByProductID(long productID,long? stockType)
         {
             List<StockModel> listM = stockDAL.GetStockInfoByProductID(productID, stockType);

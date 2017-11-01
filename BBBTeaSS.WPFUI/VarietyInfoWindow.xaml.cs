@@ -23,7 +23,7 @@ namespace BBBTeaSS.WPFUI
     /// </summary>
     public partial class VarietyInfoWindow : Window
     {
-        #region
+        #region 成语
         /// <summary>
         /// ID
         /// </summary>
@@ -37,6 +37,7 @@ namespace BBBTeaSS.WPFUI
         /// </summary>
         private VarietyModel varietyM;
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -70,6 +71,7 @@ namespace BBBTeaSS.WPFUI
                 };
             }
         }
+
         /// <summary>
         /// 添加按钮
         /// </summary>
@@ -105,6 +107,7 @@ namespace BBBTeaSS.WPFUI
         {
             varietyM.Name = TextName.Text.Trim();
         }
+
         /// <summary>
         /// 设置种类信息
         /// </summary>

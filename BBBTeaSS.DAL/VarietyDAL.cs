@@ -37,7 +37,7 @@ namespace BBBTeaSS.DAL
         /// <summary>
         /// 删除一个种类
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ID</param>
         public void DeleteVarietyInfo(long id)
         {
             VarietyModel varietyModel = GetVarietyInfoByID(id);

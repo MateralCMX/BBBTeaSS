@@ -49,7 +49,9 @@ namespace BBBTeaSS.Model
         /// </summary>
         [ColumnModel("IfDelete", "INTEGER")]
         public bool IfDelete { get; set; }
-
+        /// <summary>
+        /// 库存时间戳
+        /// </summary>
         public string StockDateTimeStr
         {
             get
@@ -58,15 +60,38 @@ namespace BBBTeaSS.Model
             }
         }
     }
-
+    /// <summary>
+    /// 库存视图模型
+    /// </summary>
     public class StockViewModel
     {
+        /// <summary>
+        /// 商品ID
+        /// </summary>
         public long ProductID { get; set; }
+        /// <summary>
+        /// 商品名称
+        /// </summary>
         public string ProductName { get; set; }
+        /// <summary>
+        /// 生产厂家
+        /// </summary>
         public string Manufactor { get; set; }
+        /// <summary>
+        /// 联系电话
+        /// </summary>
         public string Phone { get; set; }
+        /// <summary>
+        /// 生产地区
+        /// </summary>
         public string Region { get; set; }
+        /// <summary>
+        /// 种类名称
+        /// </summary>
         public string VarietyName { get; set; }
+        /// <summary>
+        /// 库存数量
+        /// </summary>
         public long StockNum { get; set; }
     }
 

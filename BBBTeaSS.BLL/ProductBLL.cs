@@ -125,7 +125,7 @@ namespace BBBTeaSS.BLL
         /// <param name="Remark">备注</param>
         /// <param name="pageIndex">分页页数</param>
         /// <param name="pageSize">分页条数</param>
-        /// <returns></returns>
+        /// <returns>返回商品信息</returns>
         public MResultPagingModel<List<ProductViewModel>> GetProductInfoByIDAndName(string Name, string Manufactor, string Phone, long varietyID, string Region, int pageIndex = 1, int pageSize = 10)
         {
             MPagingData<List<ProductViewModel>> listM = productDAL.GetProductInfoByIDAndName(Name, Manufactor, Phone, varietyID, Region, pageIndex, pageSize);

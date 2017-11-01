@@ -91,7 +91,7 @@ namespace BBBTeaSS.DAL
         /// <param name="Remark">备注</param>
         /// <param name="pageIndex">分页页数</param>
         /// <param name="pageSize">分页条数</param>
-        /// <returns></returns>
+        /// <returns>返回商品信息</returns>
         public MPagingData<List<ProductViewModel>> GetProductInfoByIDAndName(string name, string manufactor, string phone, long varietyID, string region, int pageIndex=1, int pageSize=10)
         {
             string whereStr = "";
