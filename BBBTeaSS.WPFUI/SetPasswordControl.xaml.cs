@@ -26,6 +26,7 @@ namespace BBBTeaSS.WPFUI
         #region 成员
         private UserBLL userBLL;
         #endregion
+
         /// <summary>
         /// 构造方法
         /// </summary>

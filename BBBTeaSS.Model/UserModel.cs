@@ -40,6 +40,9 @@ namespace BBBTeaSS.Model
         /// </summary>
         [ColumnModel("IfDelete", "INTEGER")]
         public bool IfDelete { get; set; }
+        /// <summary>
+        /// 默认密码
+        /// </summary>
         public UserModel()
         {
             IfDelete = false;

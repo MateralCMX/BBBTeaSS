@@ -44,6 +44,7 @@ namespace BBBTeaSS.BLL
                 return MResultModel<UserModel>.GetFailResultM(null, "用户名或者密码错误。");
             }
         }
+
         /// <summary>
         /// 修改密码
         /// </summary>
@@ -72,6 +73,7 @@ namespace BBBTeaSS.BLL
                 return MResultModel<UserModel>.GetFailResultM(null, "该用户不存在。");
             }
         }
+
         /// <summary>
         /// 根据用户唯一标识获得用户信息
         /// </summary>
@@ -89,6 +91,7 @@ namespace BBBTeaSS.BLL
                 return MResultModel<UserModel>.GetFailResultM(null, "该用户不存在。");
             }
         }
+
         /// <summary>
         /// 添加一个用户信息
         /// </summary>
@@ -107,6 +110,7 @@ namespace BBBTeaSS.BLL
                 return MResultModel.GetFailResultM("添加对象不存在。");
             }
         }
+
         /// <summary>
         /// 修改用户信息
         /// </summary>
@@ -142,6 +146,7 @@ namespace BBBTeaSS.BLL
                 return MResultModel.GetFailResultM("修改对象不存在。");
             }
         }
+
         /// <summary>
         /// 删除用户
         /// </summary>
@@ -152,12 +157,15 @@ namespace BBBTeaSS.BLL
             userDAL.DeleteUserInfo(ID);
             return MResultModel.GetSuccessResultM("删除成功");
         }
+
         /// <summary>
         /// 根据用户名和姓名查询用户信息
         /// </summary>
-        /// <param name="userID">用户名</param>
-        /// <param name="name">名称</param>
-        /// <returns>用户信息</returns>
+        /// <param name="userID">用户ID</param>
+        /// <param name="name">用户名</param>
+        /// <param name="pageIndex">分页页数</param>
+        /// <param name="pageSize">分页条数</param>
+        /// <returns></returns>
         public MResultPagingModel<List<UserModel>> GetUserInfoByUserIDAndName(string userID, string name, int pageIndex = 1, int pageSize = 10)
         {
             MPagingData<List<UserModel>> listM = userDAL.GetUserInfoByUserIDAndName(userID, name, pageIndex, pageSize);

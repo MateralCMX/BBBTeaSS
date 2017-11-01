@@ -24,6 +24,7 @@ namespace BBBTeaSS.DAL
         {
             SQLiteManager.Insert(userM);
         }
+
         /// <summary>
         /// 修改一个用户
         /// </summary>
@@ -32,6 +33,7 @@ namespace BBBTeaSS.DAL
         {
             SQLiteManager.Update(userM);
         }
+
         /// <summary>
         /// 删除一个用户
         /// </summary>
@@ -45,6 +47,7 @@ namespace BBBTeaSS.DAL
                 UpdateUserInfo(userM);
             }
         }
+
         /// <summary>
         /// 根据唯一标识获得用户信息
         /// </summary>
@@ -62,6 +65,7 @@ namespace BBBTeaSS.DAL
             UserModel userM = ConvertManager.DataTableToList<UserModel>(ds.Tables[0]).FirstOrDefault();
             return userM;
         }
+
         /// <summary>
         /// 根据用户名获得用户信息
         /// </summary>
@@ -79,6 +83,7 @@ namespace BBBTeaSS.DAL
             UserModel userM = ConvertManager.DataTableToList<UserModel>(ds.Tables[0]).FirstOrDefault();
             return userM;
         }
+
         /// <summary>
         /// 根据用户名和姓名查询用户信息
         /// </summary>

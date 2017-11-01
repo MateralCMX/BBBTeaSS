@@ -1,4 +1,5 @@
-﻿using BBBTeaSS.WPFUI.Model;
+﻿using BBBTeaSS.Model;
+using BBBTeaSS.WPFUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BBBTeaSS.WPFUI
 {
@@ -22,13 +24,21 @@ namespace BBBTeaSS.WPFUI
     public partial class MainWindow : Window
     {
         /// <summary>
+        /// 实例time
+        /// </summary>
+        DispatcherTimer timer = new DispatcherTimer();
+
+        /// <summary>
         /// 构造方法
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             OpenLoginWindow();
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
+
         #region 私有方法
         /// <summary>
         /// 打开登录窗体
@@ -98,6 +108,7 @@ namespace BBBTeaSS.WPFUI
             SetLeftTxt("就绪");
         }
         #endregion
+
         #region 公有方法
         /// <summary>
         /// 设置左边提示文本
@@ -127,7 +138,15 @@ namespace BBBTeaSS.WPFUI
         /// 隐藏顶部菜单
         /// </summary>
         public void HiddenTopMenu() => TopMenu.Visibility = Visibility.Hidden;
+        /// <summary>
+        /// 显示时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void timer_Tick(object sender, EventArgs e)=> this.LeftTxt.Text = string.Concat("当前时间：", DateTime.Now.ToString("yyyy年MM月dd日 hh:mm:ss"));
+
         #endregion
+
         /// <summary>
         /// 页面加载事件
         /// </summary>
@@ -135,7 +154,14 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(@"Images/welcome.png", UriKind.RelativeOrAbsolute);
+            bi.EndInit();
+            welcome.Source = bi;
+
         }
+
         /// <summary>
         /// 更改密码
         /// </summary>
@@ -145,6 +171,7 @@ namespace BBBTeaSS.WPFUI
         {
             AddControl(new SetPasswordControl());
         }
+
         /// <summary>
         /// 重新登录
         /// </summary>
@@ -155,6 +182,7 @@ namespace BBBTeaSS.WPFUI
             ApplicationManager.LoginUserM = null;
             OpenLoginWindow();
         }
+
         /// <summary>
         /// 退出
         /// </summary>
@@ -164,6 +192,7 @@ namespace BBBTeaSS.WPFUI
         {
             Application.Current.Shutdown();
         }
+
         /// <summary>
         /// 入库
         /// </summary>
@@ -171,8 +200,11 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMJoinStock_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductListControl plc = new ProductListControl();
+            plc.Mode = ProductWindowMode.JoinStock;
+            AddControl(plc);
         }
+
         /// <summary>
         /// 出库
         /// </summary>
@@ -180,8 +212,11 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMOutStock_Click(object sender, RoutedEventArgs e)
         {
-
+            OutStockInfoListControl osl = new OutStockInfoListControl();
+            osl.Mode = QueryStockWindowMode.OutStock;
+            AddControl(osl);
         }
+
         /// <summary>
         /// 库存查询
         /// </summary>
@@ -189,8 +224,11 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMQueryStock_Click(object sender, RoutedEventArgs e)
         {
-
+            OutStockInfoListControl osl = new OutStockInfoListControl();
+            osl.Mode = QueryStockWindowMode.Query;
+            AddControl(osl);
         }
+
         /// <summary>
         /// 商品类型
         /// </summary>
@@ -198,8 +236,9 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMVariety_Click(object sender, RoutedEventArgs e)
         {
-
+            AddControl(new VarietyListControl());
         }
+
         /// <summary>
         /// 商品
         /// </summary>
@@ -207,8 +246,13 @@ namespace BBBTeaSS.WPFUI
         /// <param name="e"></param>
         private void TMProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductListControl plc = new ProductListControl();
+            plc.Mode = ProductWindowMode.Product;
+            AddControl(plc);
         }
+
+
+
         /// <summary>
         /// 用户
         /// </summary>
@@ -218,15 +262,7 @@ namespace BBBTeaSS.WPFUI
         {
             AddControl(new UserListControl());
         }
-        /// <summary>
-        /// 关于
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TMAbout_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
         /// <summary>
         /// 我的信息
         /// </summary>

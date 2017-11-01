@@ -17,54 +17,55 @@ using System.Windows.Shapes;
 
 namespace BBBTeaSS.WPFUI
 {
+
     /// <summary>
-    /// UserInfoWindow.xaml 的交互逻辑
+    /// VarietyInfoWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class UserInfoWindow : Window
+    public partial class VarietyInfoWindow : Window
     {
-        #region 成员
+        #region 成语
         /// <summary>
         /// ID
         /// </summary>
         public long? ID { get; set; }
         /// <summary>
-        /// 用户业务逻辑对象
+        /// 种类业务逻辑对象
         /// </summary>
-        private UserBLL userBLL;
+        private VarietyBLL varietyBLL;
         /// <summary>
-        /// 用户信息对象
+        /// 种类模型
         /// </summary>
-        private UserModel userM;
+        private VarietyModel varietyM;
         #endregion
 
         /// <summary>
         /// 构造方法
         /// </summary>
-        public UserInfoWindow()
+        public VarietyInfoWindow()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// 窗体加载事件
+        /// 窗体加载时
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserWindow_Loaded(object sender, RoutedEventArgs e)
+        private void VarietyInfoWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            userBLL = new UserBLL();
-            if (ID != null)
+            varietyBLL = new VarietyBLL();
+            if(ID!=null)
             {
-                MResultModel<UserModel> resM = userBLL.GetUserInfoByID(ID.Value);
-                if (resM.ResultType == MResultType.Success)
+                MResultModel<VarietyModel> resM = varietyBLL.GetVarietyInfoByID(ID.Value);
+                if(resM.ResultType==MResultType.Success)
                 {
-                    userM = resM.Data;
-                    SetUserInfo();
+                    varietyM = resM.Data;
+                    SetVarietyInfo();
                 }
             }
-            if (userM == null)
+            if (varietyM==null)
             {
-                userM = new UserModel
+                varietyM = new VarietyModel
                 {
                     ID = 0
                 };
@@ -72,49 +73,47 @@ namespace BBBTeaSS.WPFUI
         }
 
         /// <summary>
-        /// 确定按钮事件
+        /// 添加按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            BindUserInfo();
+            BindVarietyInfo();
             MResultModel resM;
-            if (userM.ID > 0)
+            if (varietyM.ID>0)
             {
-                resM = userBLL.UpdateUserInfo(userM);
+                resM = varietyBLL.UpdateVarietyInfo(varietyM);
             }
             else
             {
-                resM = userBLL.AddUserInfo(userM);
+                resM = varietyBLL.AddVarietyInfo(varietyM);
             }
-            if (resM.ResultType == MResultType.Success)
+            if(resM.ResultType==MResultType.Success)
             {
                 ApplicationManager.ShowInfoMessageBox(resM.Message);
                 Close();
             }
             else
             {
-                ApplicationManager.ShowInfoMessageBox("修改失败\r\n" + resM.Message);
+                ApplicationManager.ShowInfoMessageBox("修改失败\r\n"+ resM.Message);
             }
         }
 
         /// <summary>
-        /// 绑定用户信息
+        /// 绑定种类信息
         /// </summary>
-        private void BindUserInfo()
+        private void BindVarietyInfo()
         {
-            userM.Name = TextName.Text.Trim();
-            userM.UserID = TextUserName.Text.Trim();
+            varietyM.Name = TextName.Text.Trim();
         }
 
         /// <summary>
-        /// 设置用户信息
+        /// 设置种类信息
         /// </summary>
-        private void SetUserInfo()
+        private void SetVarietyInfo()
         {
-            TextName.Text = userM.Name;
-            TextUserName.Text = userM.UserID;
+            TextName.Text = varietyM.Name;
         }
     }
 }
